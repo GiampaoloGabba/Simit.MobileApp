@@ -1,0 +1,90 @@
+﻿<?xml version="1.0"
+      encoding="utf-8"?>
+
+<shared:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 xmlns:shared="clr-namespace:Simit.Views.Shared;assembly=Simit"
+                 xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+                 x:Class="Simit.Views.InfoPage">
+
+    <shared:AdvancedScrollView x:Name="MyScrollView" Margin="0,-43,0,0">
+
+        <StackLayout BackgroundColor="White" Spacing="0">
+
+            <pancakeView:PancakeView Style="{StaticResource CronerRad}" Margin="0,0,0,25" 
+                                     BackgroundColor="#62ACD5" HeightRequest="170" MinimumHeightRequest="170">
+
+                <Image Source="header_logo_simit.png" HorizontalOptions="End"
+                       HeightRequest="170" WidthRequest="374" Margin="0,30,0,0" />
+                
+            </pancakeView:PancakeView>
+
+            <Label Text="XXIII Congresso Nazionale SIMIT 2024" Style="{StaticResource TitoloMain}" HorizontalOptions="Center"
+                   Margin="{OnPlatform Android='0,0,0,0', iOS='0,0,0,15'}"/>
+
+            <Label Style="{StaticResource TestoSM}" HorizontalTextAlignment="Center" LineHeight="1"  >
+
+            </Label>
+
+            <Label TextType="Html" Style="{StaticResource TestoSM}" Margin="20,-3,20,20" >
+                <![CDATA[
+Carissimo/a,
+con grande entusiasmo e piacere, desideriamo invitarvi al XXIII Congresso Nazionale di Malattie Infettive e Tropicali organizzato dalla Società Italiana di Malattie Infettive e Tropicali (SIMIT), che quest’anno avrà luogo a Napoli dal 2 al 5 dicembre 2024.
+<br><br>
+Il nostro congresso si propone di affrontare temi di grande attualità nell’ambito delle malattie infettive, offrendo un’opportunità unica per condividere idee, conoscenze e buone pratiche tra professionisti del settore.
+<br><br>
+Abbiamo lavorato con impegno per selezionare relatori di alto profilo, esperti in vari campi dell’infettivologia, i quali forniranno una panoramica completa e aggiornata sulle ultime novità scientifiche e cliniche nel loro campo di specializzazione.
+<br><br>
+Un ampio spazio sarà dedicato ai giovani infettivologi, dando loro l’opportunità di presentare i propri lavori originali attraverso le sessioni di comunicazioni orali e poster.
+<br><br>
+Crediamo fermamente nel valore della ricerca e nell’importanza di dare voce alle nuove generazioni di professionisti.
+<br><br>
+Durante il congresso, ci saranno numerose occasioni per incontrarsi e scambiare opinioni con colleghi e amici in un ambiente cordiale e informale, durante le attività organizzate dal comitato. Napoli, con la sua storia millenaria, la sua cultura vibrante e la sua cucina rinomata, sarà il palcoscenico ideale per unire l’aspetto scientifico a quello sociale, garantendo un’esperienza unica e memorabile.
+<br><br>
+Ti invitiamo ad unirti a noi a Napoli per questo straordinario evento scientifico e sociale. La tua partecipazione contribuirà a rendere il congresso un successo e a promuovere lo scambio di conoscenze e esperienze nel campo delle malattie infettive.
+<br><br>
+Arrivederci a Napoli!
+]]>
+            </Label>
+
+
+            <Label Text="Comitato organizzatore" Style="{StaticResource TitoloMain}" HorizontalOptions="Center"
+                   Margin="0,0,0,15" />
+
+            <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto,10,Auto,Auto" Margin="0, 0, 0, 20">
+
+                    <Image Grid.Row="0" Grid.Column="0" Source="coppola.jpg" WidthRequest="150" HeightRequest="150" HorizontalOptions="Center" />
+
+                    <Label Grid.Row="1" Grid.Column="0" HorizontalTextAlignment="Center" Margin="10,0" 
+                           Text="Nicola Coppola"
+                           Style="{StaticResource TestoMainBold}">
+                    </Label>
+
+                    <Image Grid.Row="0" Grid.Column="1" Source="esposito.jpg"  WidthRequest="150" HeightRequest="150" HorizontalOptions="Center" />
+
+                    <Label Grid.Row="1" Grid.Column="1" HorizontalTextAlignment="Center" Margin="10,0" 
+                           Text="Vincenzo Esposito"
+                           Style="{StaticResource TestoMainBold}">
+                    </Label>
+
+
+                    <Image Grid.Row="3" Grid.Column="0" Source="gentile.jpg" WidthRequest="150" HeightRequest="150" HorizontalOptions="Center" />
+
+                    <Label Grid.Row="4" Grid.Column="0" HorizontalTextAlignment="Center" Margin="10,0" 
+                           Text="Ivan Gentile"
+                           Style="{StaticResource TestoMainBold}">
+                    </Label>
+
+                    <Image Grid.Row="3" Grid.Column="1" Source="parrella.jpg"  WidthRequest="150" HeightRequest="150" HorizontalOptions="Center" />
+
+                    <Label Grid.Row="4" Grid.Column="1" HorizontalTextAlignment="Center" Margin="10,0" 
+                           Text="Roberto Parrella"
+                           Style="{StaticResource TestoMainBold}">
+                    </Label>
+
+            </Grid>
+
+
+        </StackLayout>
+    </shared:AdvancedScrollView>
+</shared:BasePage>

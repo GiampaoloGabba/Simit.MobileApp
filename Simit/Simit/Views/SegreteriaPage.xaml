@@ -1,0 +1,111 @@
+﻿<?xml version="1.0"
+      encoding="utf-8"?>
+
+<shared:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 xmlns:shared="clr-namespace:Simit.Views.Shared;assembly=Simit"
+                 xmlns:viewModels="clr-namespace:Simit.ViewModels;assembly=Simit"
+                 x:Class="Simit.Views.SegreteriaPage"
+                 x:DataType="viewModels:SegreteriaPageViewModel">
+
+    <shared:AdvancedScrollView IsVisible="{Binding ShowContent}">
+
+        <StackLayout Margin="20,20,20,0" Spacing="0">
+
+            <Image Source="nadirex_logo.png" Aspect="AspectFit" HeightRequest="50" />
+
+
+            <Label TextType="Html" Style="{StaticResource TestoSM}" HorizontalTextAlignment="Center" Margin="0,25,0,0"
+                   LineHeight="1.1">
+                <![CDATA[
+            <strong>Nadirex International S.r.l.</strong><br>
+            Provider ECM n.265
+<br><br>
+            Via Riviera 39, 27100 Pavia (PV)<br>
+            Tel: +39 0382 525714<br>
+            P. IVA e C.F. 12521390158]]>
+            </Label>
+
+            <Label Style="{StaticResource TestoSM}" HorizontalTextAlignment="Center" LineHeight="1.1"
+                   Text="https://www.nadirex.com" TextColor="{StaticResource Primario}">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding InfoLinkCommand}"
+                                          CommandParameter="https://www.nadirex.com" />
+                </Label.GestureRecognizers>
+            </Label>
+
+            <Label Style="{StaticResource TestoSM}" HorizontalTextAlignment="Center" LineHeight="1.1"
+                   Margin="0, 20, 0,0">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="RESPONSABILE AGENZIA E RESPONSABILE PROGETTO" FontAttributes="Bold" />
+                        <Span Text="&#10;&#10;" FontSize="3" />
+                        <Span Text="Chiara Martina Zoncada" />
+                        <Span Text="&#10;" />
+                        <Span Text="chiara.zoncada@nadirex.com" TextColor="{StaticResource Primario}">
+                            <Span.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding InfoLinkCommand}"
+                                                      CommandParameter="chiara.zoncada@nadirex.com" />
+                            </Span.GestureRecognizers>
+                        </Span>
+
+                        <Span Text="&#10;&#10;" FontSize="16" />
+                        <Span Text="REFERENTI PROGETTO" FontAttributes="Bold" />
+                        <Span Text="&#10;&#10;" FontSize="3" />
+
+                        <Span Text="Annalisa Antonino" />
+                        <Span Text="&#10;" />
+                        <Span Text="annalisa.antonino@nadirex.com" TextColor="{StaticResource Primario}">
+                            <Span.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding InfoLinkCommand}"
+                                                      CommandParameter="annalisa.antonino@nadirex.com" />
+                            </Span.GestureRecognizers>
+                        </Span>
+
+                        <Span Text="&#10;&#10;" />
+                        <Span Text="Luana Cattaruzza" />
+                        <Span Text="&#10;" />
+                        <Span Text="luana.cattaruzza@nadirex.com" TextColor="{StaticResource Primario}">
+                            <Span.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding InfoLinkCommand}"
+                                                      CommandParameter="luana.cattaruzza@nadirex.com" />
+                            </Span.GestureRecognizers>
+                        </Span>
+
+                        <Span Text="&#10;&#10;" />
+                        <Span Text="Deborah Cattaruzza" />
+                        <Span Text="&#10;" />
+                        <Span Text="deborah.cattaruzza@nadirex.com" TextColor="{StaticResource Primario}">
+                            <Span.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding InfoLinkCommand}"
+                                                      CommandParameter="deborah.cattaruzza@nadirex.com" />
+                            </Span.GestureRecognizers>
+                        </Span>
+
+                        <Span Text="&#10;&#10;" />
+                        <Span Text="Sara Tedeschi" />
+                        <Span Text="&#10;" />
+                        <Span Text="sara.tedeschi@nadirex.com" TextColor="{StaticResource Primario}">
+                            <Span.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding InfoLinkCommand}"
+                                                      CommandParameter="sara.tedeschi@nadirex.com" />
+                            </Span.GestureRecognizers>
+                        </Span>
+
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Image Source="logo_simit_associazione.png" HeightRequest="70" VerticalOptions="End" Margin="0,30,0,0" />
+            <Label Style="{StaticResource TestoSM}" HorizontalTextAlignment="Center" LineHeight="1.1"
+                   Text="https://www.simit.org" TextColor="{StaticResource Primario}" Margin="0,0,0,30">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding InfoLinkCommand}" CommandParameter="https://www.simit.org" />
+                </Label.GestureRecognizers>
+            </Label>
+
+        </StackLayout>
+
+    </shared:AdvancedScrollView>
+
+</shared:BasePage>

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<shared:NotchContentPage x:Class="Simit.Views.Shared.BasePage"
+                         xmlns="http://xamarin.com/schemas/2014/forms"
+                         xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                         xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+                         xmlns:shared="clr-namespace:Simit.Views.Shared;assembly=Simit"
+                         Padding="0"
+                         prism:ViewModelLocator.AutowireViewModel="True"
+                         ControlTemplate="{StaticResource TemplateBase}"
+                         IsBusy="{Binding IsBusy}"
+                         NavigationPage.HasNavigationBar="False"
+                         ReActivateEdgeSwipeOniOS="True"
+                         BackgroundColor="White">
+
+</shared:NotchContentPage>

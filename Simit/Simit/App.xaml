@@ -1,0 +1,282 @@
+﻿<?xml version="1.0"
+      encoding="utf-8"?>
+
+<prism:PrismApplication xmlns="http://xamarin.com/schemas/2014/forms"
+                        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                        xmlns:prism="http://prismlibrary.com"
+                        xmlns:shades="http://sharpnado.com"
+                        xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+                        xmlns:effects="clr-namespace:Simit.Core.Effects;assembly=Simit"
+                        xmlns:localfont="clr-namespace:Simit.Resources.AppFonts;assembly=Simit"
+                        xmlns:converters="clr-namespace:Simit.Core.Converters;assembly=Simit"
+                        x:Class="Simit.App">
+    <Application.Resources>
+
+        <ResourceDictionary>
+
+            <converters:InverseBoolConverter x:Key="InverseBoolConverter" />
+
+            <!-- Colors -->
+            <Color x:Key="Primario">#046093</Color>
+            <Color x:Key="Accent">#F08306</Color>
+            <Color x:Key="GialloLogo">#FB9C16</Color>
+            <Color x:Key="GrigioScuro">#b3b3b3</Color>
+            <Color x:Key="GrigioChiaro">#f1f0f2</Color>
+            <Color x:Key="Bianco">#ffffff</Color>
+            <Color x:Key="AzzurroCielo">#36a0c3</Color>
+            <Color x:Key="Secondario">#accce5</Color>
+            <Color x:Key="Arancio">#ff6600</Color>
+
+            <!-- Styles -->
+            <Style x:Key="TitoloMain" TargetType="Label">
+                <Setter Property="FontFamily" Value="Roboto-Bold" />
+                <Setter Property="FontSize" Value="18" />
+                <Setter Property="TextColor" Value="{StaticResource Primario}" />
+            </Style>
+
+            <Style x:Key="TestoMain" TargetType="Label">
+                <Setter Property="FontFamily" Value="Roboto-Regular" />
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="TextColor" Value="#1D1D1D" />
+            </Style>
+
+            <Style x:Key="TestoMainBold" TargetType="Label">
+                <Setter Property="FontFamily" Value="Roboto-Bold" />
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="TextColor" Value="#1D1D1D" />
+            </Style>
+
+            <Style x:Key="TestoAccentXS" TargetType="Label">
+                <Setter Property="FontFamily" Value="Roboto-Regular" />
+                <Setter Property="FontSize" Value="13" />
+                <Setter Property="TextColor" Value="{StaticResource Accent}" />
+            </Style>
+
+            <Style x:Key="TestoMainXS" TargetType="Label">
+                <Setter Property="FontFamily" Value="Roboto-Regular" />
+                <Setter Property="FontSize" Value="13" />
+                <Setter Property="TextColor" Value="{StaticResource GrigioScuro}" />
+            </Style>
+
+            <Style x:Key="TitoloNavBar" TargetType="Label">
+                <Setter Property="FontFamily" Value="Roboto-Bold" />
+                <Setter Property="FontSize" Value="22" />
+                <Setter Property="TextColor" Value="{StaticResource Bianco}" />
+            </Style>
+
+            <Style x:Key="TestoSM" TargetType="Label">
+                <Setter Property="FontFamily" Value="Roboto-Regular" />
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="TextColor" Value="#1D1D1D" />
+            </Style>
+
+            <Style x:Key="TitoloSub" TargetType="Label">
+                <Setter Property="FontFamily" Value="Roboto-Bold" />
+                <Setter Property="FontSize" Value="17" />
+                <Setter Property="TextColor" Value="{StaticResource Primario}" />
+            </Style>
+
+            <Style x:Key="TitoloAccent" TargetType="Label">
+                <Setter Property="FontFamily" Value="Roboto-Bold" />
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="TextColor" Value="{StaticResource Accent}" />
+            </Style>
+
+            <Style x:Key="TitoloAccentSM" TargetType="Label">
+                <Setter Property="FontFamily" Value="Roboto-Bold" />
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="TextColor" Value="{StaticResource Accent}" />
+            </Style>
+
+            <Style x:Key="TestoMainBianco" TargetType="Label">
+                <Setter Property="FontFamily" Value="Roboto-Regular" />
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="TextColor" Value="{StaticResource Bianco}" />
+            </Style>
+
+            <Style x:Key="TestoGialloXS" TargetType="Label">
+                <Setter Property="FontFamily" Value="Roboto-Regular" />
+                <Setter Property="FontSize" Value="13" />
+                <Setter Property="TextColor" Value="{StaticResource GialloLogo}" />
+            </Style>
+
+            <Style x:Key="Style11" TargetType="Label">
+                <Setter Property="FontFamily" Value="Roboto-Bold" />
+                <Setter Property="FontSize" Value="26" />
+                <Setter Property="TextColor" Value="{StaticResource Bianco}" />
+            </Style>
+
+            <Style x:Key="TestoSecondarioXS" TargetType="Label">
+                <Setter Property="FontFamily" Value="Roboto-Bold" />
+                <Setter Property="FontSize" Value="13" />
+                <Setter Property="TextColor" Value="{StaticResource Secondario}" />
+            </Style>
+
+            <Style x:Key="TestoBiancoXXS" TargetType="Label">
+                <Setter Property="FontFamily" Value="Roboto-Regular" />
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="TextColor" Value="{StaticResource Bianco}" />
+            </Style>
+
+            <Style x:Key="TitoloSubXS" TargetType="Label">
+                <Setter Property="FontFamily" Value="Roboto-Bold" />
+                <Setter Property="FontSize" Value="13" />
+                <Setter Property="TextColor" Value="{StaticResource Primario}" />
+            </Style>
+
+            <shades:SingleShade x:Key="ShadowBottom"
+                                BlurRadius="30"
+                                Opacity="0.7"
+                                Offset="10,-2"
+                                Color="Black" />
+
+            <shades:SingleShade x:Key="ShadowBottomLight"
+                                BlurRadius="8"
+                                Offset="0,4"
+                                Color="#9A9A9A" />
+
+            <Style x:Key="CronerRad" TargetType="pancake:PancakeView">
+                <Setter Property="CornerRadius" Value="0,0,40,0" />
+            </Style>
+
+            <!--  Template di base  -->
+
+            <ControlTemplate x:Key="TemplateBase">
+
+                <Grid RowDefinitions="90,*">
+
+                    <ContentPresenter Grid.Row="1" />
+
+                    <!--<shared:Gilead Grid.Row="1" VerticalOptions="End"
+                                   BindingContext="{TemplateBinding BindingContext}"
+                                   Show="{TemplateBinding BindingContext.ShowGilead}"  />-->
+
+                    <shades:Shadows
+                        Grid.Row="0"
+                        CornerRadius="5" BackgroundColor="Transparent"
+                        Shades="{StaticResource ShadowBottom}">
+
+                        <pancake:PancakeView Style="{StaticResource CronerRad}"
+                                             BackgroundColor="{StaticResource Primario}"
+                                             BackgroundGradientStartPoint="0,0" BackgroundGradientEndPoint="0,1"
+                                             Padding="{OnPlatform Android='35,40,15,13', iOS='35,5,15,8'}"
+
+                                             >
+                            <pancake:PancakeView.BackgroundGradientStops>
+                                <pancake:GradientStopCollection>
+                                    <pancake:GradientStop Color="#056FA7" Offset="0" />
+                                    <pancake:GradientStop Color="#045F8F" Offset="0.8" />
+                                </pancake:GradientStopCollection>
+                            </pancake:PancakeView.BackgroundGradientStops>
+
+                            <StackLayout Orientation="Horizontal" VerticalOptions="End">
+
+                                <StackLayout.Effects>
+                                    <effects:SafeAreaPaddingEffect MinPaddingTop="25" />
+                                </StackLayout.Effects>
+
+                                <!--<Label BindingContext="{TemplateBinding BindingContext}" IsVisible="{TemplateBinding BindingContext.HasBackButton}"
+                                       FontFamily="SimitIcons" FontAttributes="Bold" VerticalOptions="Center"
+                                       Style="{StaticResource TitoloNavBar}"
+                                       Text="{x:Static localfont:SimitIcons.FrecciaDx}" >
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer BindingContext="{TemplateBinding BindingContext}" Command="{TemplateBinding BindingContext.BackCommand}" />
+                                    </Label.GestureRecognizers>
+                                </Label>-->
+
+                                <Label BindingContext="{TemplateBinding BindingContext}" Margin="0,-4,5,0"
+                                       Text="{TemplateBinding BindingContext.Title}"
+                                       Style="{StaticResource TitoloNavBar}" VerticalOptions="End" HorizontalOptions="StartAndExpand" />
+
+                               <!-- <Label BindingContext="{TemplateBinding BindingContext}" Margin="0,0,10,0"
+                                       FontFamily="SimitIcons" FontAttributes="Bold" VerticalOptions="Center"
+                                       Style="{StaticResource TitoloNavBar}"
+                                       Text="{x:Static localfont:SimitIcons.FacebookSquared}"
+                                       IsVisible="{TemplateBinding BindingContext.ShowClose, Converter={StaticResource InverseBoolConverter }}">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                            BindingContext="{TemplateBinding BindingContext}"
+                                            Command="{TemplateBinding BindingContext.InfoLinkCommand}" CommandParameter="facebook" />
+                                    </Label.GestureRecognizers>
+                                </Label>-->
+
+                            <!--    <Path BindingContext="{TemplateBinding BindingContext}" Margin="0,0,0,0"
+                                      VerticalOptions="Center"
+                                      StrokeThickness="0" Fill="#FEBB64" Aspect="UniformToFill" HeightRequest="33" WidthRequest="33"
+                                      Data="M12,19.2C9.5,19.2 7.29,17.92 6,16C6.03,14 10,12.9 12,12.9C14,12.9 17.97,14 18,16C16.71,17.92 14.5,19.2 12,19.2M12,5A3,3 0 0,1 15,8A3,3 0 0,1 12,11A3,3 0 0,1 9,8A3,3 0 0,1 12,5M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2Z"
+                                      IsVisible="{TemplateBinding BindingContext.ShowClose, Converter={StaticResource InverseBoolConverter }}">
+
+                                    <Path.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                            BindingContext="{TemplateBinding BindingContext}"
+                                            Command="{TemplateBinding BindingContext.InfoLinkCommand}" CommandParameter="area-riservata" />
+                                    </Path.GestureRecognizers>
+
+                                </Path>-->
+
+                                <Label BindingContext="{TemplateBinding BindingContext}" Margin="0,0,4,0"
+                                       FontFamily="SimitIcons" FontAttributes="Bold" VerticalOptions="Center"
+                                       Style="{StaticResource TitoloNavBar}"
+                                       Text="{x:Static localfont:SimitIcons.Close}" FontSize="30"
+                                       IsVisible="{TemplateBinding BindingContext.ShowClose}" >
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                            BindingContext="{TemplateBinding BindingContext}"
+                                            Command="{TemplateBinding BindingContext.InfoLinkCommand}" CommandParameter="chiudi" />
+                                    </Label.GestureRecognizers>
+                                </Label>
+
+                            </StackLayout>
+                        </pancake:PancakeView>
+
+                    </shades:Shadows>
+                </Grid>
+
+            </ControlTemplate>
+
+
+            <ControlTemplate x:Key="TemplatePopup">
+
+                <pancake:PancakeView
+                    HorizontalOptions="Fill" VerticalOptions="CenterAndExpand"
+                    CornerRadius="0,50,50,0" Margin="25"
+                    BackgroundGradientStartPoint="0,0" BackgroundGradientEndPoint="0,1">
+                    <pancake:PancakeView.BackgroundGradientStops>
+                        <pancake:GradientStopCollection>
+                            <pancake:GradientStop Color="#056FA7" Offset="0" />
+                            <pancake:GradientStop Color="#045F8F" Offset="0.8" />
+                        </pancake:GradientStopCollection>
+                    </pancake:PancakeView.BackgroundGradientStops>
+
+                    <Grid RowDefinitions="Auto,*" ColumnDefinitions="*,30" Padding="30,20,30,30">
+
+                        <Label Grid.Row="0" Grid.Column="0" Margin="0,0,0,20"
+                               BindingContext="{TemplateBinding BindingContext}"
+                               Text="{TemplateBinding BindingContext.Titolo}"
+                               Style="{StaticResource TitoloNavBar}"/>
+
+                        <Label Grid.Row="0" Grid.Column="1"
+                               FontFamily="SimitIcons" FontSize="30"
+                               HorizontalOptions="End" VerticalOptions="Start"
+                               Text="{x:Static localfont:SimitIcons.Close}" >
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    BindingContext="{TemplateBinding BindingContext}"
+                                    Command="{TemplateBinding BindingContext.GoBackCommand}"  />
+                            </Label.GestureRecognizers>
+                        </Label>
+
+                        <ContentPresenter Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+
+                        </ContentPresenter>
+
+
+                    </Grid>
+                </pancake:PancakeView>
+
+            </ControlTemplate>
+
+        </ResourceDictionary>
+
+    </Application.Resources>
+</prism:PrismApplication>

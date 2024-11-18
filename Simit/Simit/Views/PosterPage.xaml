@@ -1,0 +1,145 @@
+﻿<?xml version="1.0"
+      encoding="utf-8"?>
+
+<shared:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 xmlns:shared="clr-namespace:Simit.Views.Shared;assembly=Simit"
+                 x:Class="Simit.Views.PosterPage">
+
+    <StackLayout Spacing="0" IsVisible="{Binding ShowContent}">
+
+        <Label BackgroundColor="{StaticResource Accent}" Padding="10,48,10,10"
+               Margin="0,-43,0,0" HorizontalTextAlignment="Center" LineHeight="1.1"
+               FontSize="15" TextColor="{StaticResource Primario}" FontFamily="Roboto">
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="LA VOTAZIONE POSTER CONGRESSUALI SIMIT 2024&#10;" TextColor="Black" />
+                    <Span Text="SARÀ ATTIVA DALLE ORE 09:00 DEL 2/12/2024" TextColor="Black" FontSize="15"
+                          FontFamily="Roboto-Bold" />
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+
+        <shared:AdvancedScrollView>
+
+            <StackLayout Margin="30,20,30,0" Spacing="20">
+
+                <Label Style="{StaticResource TitoloMain}" Text="COME VOTARE" HorizontalOptions="Center" FontSize="18" />
+
+                <Grid RowSpacing="10">
+
+                    <Frame BackgroundColor="{StaticResource Primario}" HasShadow="False" CornerRadius="20"
+                           Margin="30,0,0,0" Padding="50,20,20,20">
+
+                        <Label TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" FontSize="14">
+                            Potrà visionare i poster in formato digitale tramite i totem multimediali che troverà nell'apposita area poster collocata presso il foyer del centro congressi Stazione Marittima...
+                        </Label>
+                    </Frame>
+
+                    <Ellipse
+                        BackgroundColor="Transparent"
+                        HeightRequest="60"
+                        WidthRequest="59"
+                        MinimumHeightRequest="60"
+                        VerticalOptions="Center" HorizontalOptions="Start"
+                        Fill="White" />
+
+                    <ContentView Margin="0,0,0,0"
+                                 BackgroundColor="{StaticResource Accent}" HeightRequest="56" WidthRequest="56"
+                                 MinimumHeightRequest="56" VerticalOptions="Center" HorizontalOptions="Start">
+
+                        <Label Text="1" TextColor="White" FontSize="20" FontAttributes="Bold"
+                               HorizontalOptions="Center" VerticalOptions="Center" />
+
+                        <ContentView.Clip>
+                            <EllipseGeometry Center="28,28" RadiusX="28" RadiusY="28" />
+                        </ContentView.Clip>
+
+                    </ContentView>
+
+                </Grid>
+
+                <Grid RowSpacing="10">
+
+                    <Frame BackgroundColor="{StaticResource Primario}" HasShadow="False" CornerRadius="20"
+                           Margin="30,0,0,0" Padding="50,20,20,20">
+
+                        <Label TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" FontSize="14">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span
+                                        Text="...oppure visualizzare il poster in formato elettronico cliccando il pulsante VOTA POSTER qui sotto.&#10;&#10;" />
+                                    <Span Text="E' possibile esprimere un massimo di tre preferenze." />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </Frame>
+
+                    <Ellipse
+                        BackgroundColor="Transparent"
+                        HeightRequest="60"
+                        WidthRequest="59"
+                        MinimumHeightRequest="60"
+                        VerticalOptions="Center" HorizontalOptions="Start"
+                        Fill="White" />
+
+                    <ContentView Margin="0,0,0,0"
+                                 BackgroundColor="{StaticResource Accent}" HeightRequest="56" WidthRequest="56"
+                                 MinimumHeightRequest="56" VerticalOptions="Center" HorizontalOptions="Start">
+
+                        <Label Text="2" TextColor="White" FontSize="20" FontAttributes="Bold"
+                               HorizontalOptions="Center" VerticalOptions="Center" />
+
+                        <ContentView.Clip>
+                            <EllipseGeometry Center="28,28" RadiusX="28" RadiusY="28" />
+                        </ContentView.Clip>
+
+                    </ContentView>
+
+                </Grid>
+
+                <Grid RowSpacing="10">
+
+                    <Frame BackgroundColor="{StaticResource Primario}" HasShadow="False" CornerRadius="20"
+                           Margin="30,0,0,0" Padding="50,20,20,20">
+
+                        <Label TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" FontSize="14">
+                            La visualizzazione e votazione dei poster è consentita ai soli iscritti inserendo l'indirizzo email utilizzato in fase di registrazione al congresso tramite il sito simit2024.it.
+                        </Label>
+                    </Frame>
+
+                    <Ellipse
+                        BackgroundColor="Transparent"
+                        HeightRequest="60"
+                        WidthRequest="59"
+                        MinimumHeightRequest="60"
+                        VerticalOptions="Center" HorizontalOptions="Start"
+                        Fill="White" />
+
+                    <ContentView Margin="0,0,0,0"
+                                 BackgroundColor="{StaticResource Accent}" HeightRequest="56" WidthRequest="56"
+                                 MinimumHeightRequest="56" VerticalOptions="Center" HorizontalOptions="Start">
+
+                        <Label Text="3" TextColor="White" FontSize="20" FontAttributes="Bold"
+                               HorizontalOptions="Center" VerticalOptions="Center" />
+
+                        <ContentView.Clip>
+                            <EllipseGeometry Center="28,28" RadiusX="28" RadiusY="28" />
+                        </ContentView.Clip>
+
+                    </ContentView>
+
+                </Grid>
+
+                <Button Text="VOTA POSTER" CornerRadius="20" BackgroundColor="{StaticResource Accent}"
+                        TextColor="White" BorderWidth="0"
+                        FontAttributes="Bold" HorizontalOptions="Center" Padding="40,0" HeightRequest="40"
+                        Command="{Binding PosterCommand}" />
+
+
+            </StackLayout>
+
+        </shared:AdvancedScrollView>
+    </StackLayout>
+
+</shared:BasePage>

@@ -1,0 +1,28 @@
+﻿<?xml version="1.0"
+      encoding="utf-8"?>
+
+<shared:BasePopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                      xmlns:shared="clr-namespace:Simit.Views.Shared;assembly=Simit"
+                      xmlns:viewModels="clr-namespace:Simit.ViewModels;assembly=Simit"
+                      x:Class="Simit.Views.Popups.RelatoriPopupPage"
+                      x:DataType="viewModels:RelatoriPopupPageViewModel">
+
+
+    <CollectionView
+        ItemsSource="{Binding Faculty}"
+        ItemSizingStrategy="MeasureFirstItem"
+        VerticalScrollBarVisibility="Never"
+        SelectionMode="None"
+        VerticalOptions="FillAndExpand">
+
+        <CollectionView.ItemTemplate>
+            <DataTemplate x:DataType="x:String">
+                <Label HorizontalTextAlignment="Center" Style="{StaticResource TestoMainBianco}" FontSize="15" Text="{Binding .}"
+                       Margin="0,0,0,5" />
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+
+    </CollectionView>
+
+</shared:BasePopupPage>

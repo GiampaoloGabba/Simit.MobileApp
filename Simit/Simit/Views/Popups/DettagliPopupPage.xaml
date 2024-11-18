@@ -1,0 +1,110 @@
+﻿<?xml version="1.0"
+      encoding="utf-8"?>
+
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+                 xmlns:localfont="clr-namespace:Simit.Resources.AppFonts;assembly=Simit"
+                 xmlns:pages="http://rotorgames.com"
+                 xmlns:viewModels="clr-namespace:Simit.ViewModels;assembly=Simit"
+                 xmlns:views="http://xamarin.com/schemas/2020/toolkit"
+                 xmlns:models="clr-namespace:Simit.Core.Models;assembly=Simit"
+                 xmlns:shared="clr-namespace:Simit.Views.Shared;assembly=Simit"
+                 CloseWhenBackgroundIsClicked="True"
+                 BackgroundColor="#7E000000"
+                 HasSystemPadding="False"
+                 x:Class="Simit.Views.Popups.DettagliPopupPage"
+                 x:DataType="viewModels:DettagliPopupPageViewModel">
+
+    <pages:PopupPage.Animation>
+        <pages:ScaleAnimation
+            PositionIn="Center"
+            PositionOut="Center"
+            ScaleIn="0.6"
+            ScaleOut="0.6"
+            DurationIn="150"
+            DurationOut="150"
+            EasingIn="SinOut"
+            EasingOut="SinIn"
+            HasBackgroundAnimation="True"/>
+    </pages:PopupPage.Animation>
+
+    <pages:PopupPage.Resources>
+        <ResourceDictionary>
+
+            <Style TargetType="Label">
+                <Setter Property="FontFamily" Value="Roboto-Bold" />
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="TextColor" Value="{StaticResource Bianco}" />
+            </Style>
+
+        </ResourceDictionary>
+    </pages:PopupPage.Resources>
+
+    <pancakeView:PancakeView BackgroundColor="White"
+        HorizontalOptions="Fill" VerticalOptions="CenterAndExpand"
+        CornerRadius="0,50,50,0" Margin="25,35,25,25">
+
+        <Grid RowDefinitions="Auto,*" ColumnDefinitions="*,30" RowSpacing="0" Padding="30,15,30,16">
+
+            <!--<Label Grid.Row="0" Grid.Column="0" Margin="0,0,0,20"
+                   Text="Dettagli"
+                   Style="{StaticResource TitoloMain}"/>-->
+
+            <Label Grid.Row="0" Grid.Column="1"
+                   FontFamily="SimitIcons" FontSize="30"
+                   HorizontalOptions="End" VerticalOptions="Start" TextColor="{StaticResource Accent}"
+                   Text="{x:Static localfont:SimitIcons.Close}" >
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Command="{Binding GoBackCommand}"  />
+                </Label.GestureRecognizers>
+            </Label>
+
+            <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+
+                <Label IsVisible="{Binding Programma.HasScheda}" Margin="0,5,0,0">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="{Binding Scheda.Titolo}" Style="{StaticResource TitoloSub}" />
+                            <Span Text="&#10;-&#10;" FontSize="5" TextColor="Transparent" />
+                            <Span Text="{Binding Scheda.SottoTitolo}" Style="{StaticResource TestoSM}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <Label Text="{Binding Scheda.SottoTitoloBold}" Style="{StaticResource TitoloSubXS}" TextColor="#444444"
+                       IsVisible="{Binding Scheda.SottoTitoloBold, Converter={views:IsNotNullOrEmptyConverter}}" />
+
+                <Image Source="pfizer.png" Margin="0,5" HorizontalOptions="Center" HeightRequest="50" IsVisible="{Binding Scheda.Sponsor, Converter={views:IsNotNullOrEmptyConverter}}" />
+
+                <shared:AdvancedScrollView>
+                <StackLayout BindableLayout.ItemsSource="{Binding Programma.Ore}" Spacing="20">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate x:DataType="models:Ore">
+                            <StackLayout  Spacing="2">
+                                <Label Text="{Binding Orario}" Style="{StaticResource TitoloAccentSM}"  IsVisible="{Binding Orario, Converter={views:IsNotNullOrEmptyConverter}}"  />
+                                <Label>
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{Binding Descrizione}" Style="{StaticResource TestoSM}"  />
+                                            <Span Text="&#10;-&#10;" FontSize="2" TextColor="Transparent" />
+                                            <Span Text="{Binding Relatore}" Style="{StaticResource TitoloSubXS}" FontSize="14"  />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+
+                            </StackLayout>
+
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+                </shared:AdvancedScrollView>
+
+            </StackLayout>
+
+        </Grid>
+    </pancakeView:PancakeView>
+
+
+</pages:PopupPage>

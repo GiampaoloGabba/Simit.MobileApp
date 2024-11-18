@@ -1,0 +1,61 @@
+﻿<?xml version="1.0"
+      encoding="utf-8"?>
+
+<shared:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 xmlns:shared="clr-namespace:Simit.Views.Shared;assembly=Simit"
+                 xmlns:viewModels="clr-namespace:Simit.ViewModels;assembly=Simit"
+                 x:Class="Simit.Views.SediPage"
+                 x:DataType="viewModels:SediPageViewModel">
+
+    <shared:AdvancedScrollView Margin="0,-43,0,0" IsVisible="{Binding ShowContent}">
+
+        <StackLayout Margin="0,0,0,0" Spacing="0">
+
+            <Image Source="stazione_marittima.jpg" Aspect="AspectFill" HeightRequest="200" Margin="0,0,0,20" />
+
+            <Label Style="{StaticResource TestoSM}" HorizontalTextAlignment="Center" LineHeight="1" Margin="20,0,20,0">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Centro Congressi Stazione Marittima" Style="{StaticResource TitoloMain}" />
+                        <Span Text="&#10;Molo Angioino&#10;Napoli" FontSize="16" LineHeight="1.4" />
+                        <Span Text="&#10;&#10;Come arrivare&#10;&#10;" Style="{StaticResource TitoloMain}" />
+
+                        <Span Text="Bus: " FontAttributes="Bold" />
+                        <Span Text="linea 101, 151, 154, 168, 202, ALIBUS" />
+                        <Span Text="&#10;&#10;" />
+
+                        <Span Text="Treno: " FontAttributes="Bold" />
+                        <Span
+                            Text="per chi arriva a Napoli in treno, dalla stazione centrale al porto è possibile utilizzare il servizio Alibus, il pullman-navetta dell’ANM (circolare Aeroporto – Porto – Stazione Centrale) che parte dall’Aeroporto di Capodichino e raggiunge Calata Porta di Massa e il Molo Beverello con l’unica fermata intermedia proprio alla stazione F.S. di Piazza Garibaldi." />
+                        <Span Text="&#10;&#10;" />
+
+                        <Span Text="A piedi" FontAttributes="Bold" />
+                        <Span Text=", invece, la Stazione Centrale di Napoli dista dal Molo Beverello circa 3km." />
+                        <Span Text="&#10;&#10;" />
+
+                        <Span Text="Tram: " FontAttributes="Bold" />
+                        <Span
+                            Text="la stazione tram più vicina a Stazione Marittima di Napoli è Colombo – Porto. Il porto di Napoli si trova poi a soli 15 km dall’Aeroporto Internazionale di Capodichino, al quale è collegato da un servizio navetta autobus." />
+                        <Span Text="&#10;&#10;" />
+
+                        <Span Text="Metro: " FontAttributes="Bold" />
+                        <Span
+                            Text="la stazione metro più vicina è Municipio. La recente apertura della nuova fermata della metropolitana avvicina ulteriormente la Stazione Marittima alla città, offrendo la possibilità di spostamenti comodi e veloci, direttamente dal porto." />
+                        <Span Text="&#10;&#10;" />
+
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Button Text="Calcola il percorso" CornerRadius="20" BackgroundColor="{StaticResource Primario}"
+                    TextColor="White"
+                    BorderWidth="0" Margin="20,0,20,20"
+                    FontAttributes="Bold" HorizontalOptions="Center" Padding="40,0" HeightRequest="40"
+                    Clicked="Button_OnClicked" />
+
+        </StackLayout>
+
+    </shared:AdvancedScrollView>
+
+</shared:BasePage>

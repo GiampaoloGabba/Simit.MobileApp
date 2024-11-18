@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:androidSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:localfont="clr-namespace:Simit.Resources.AppFonts;assembly=Simit"
+             xmlns:views="clr-namespace:Simit.Views;assembly=Simit"
+             xmlns:effects="clr-namespace:Simit.Core.Effects;assembly=Simit"
+             x:Class="Simit.Views.MainPage"
+             androidSpecific:TabbedPage.OffscreenPageLimit="8"
+             androidSpecific:TabbedPage.ToolbarPlacement="Bottom"
+             androidSpecific:TabbedPage.IsSmoothScrollEnabled="False"
+             androidSpecific:TabbedPage.IsSwipePagingEnabled="False"
+             BarBackgroundColor="{StaticResource Bianco}"
+             SelectedTabColor="{StaticResource Accent}"
+             UnselectedTabColor="{StaticResource GrigioScuro}" >
+
+    <TabbedPage.Effects>
+        <effects:NoShiftEffect />
+    </TabbedPage.Effects>
+
+    <views:InfoPage Title="Info" >
+        <views:InfoPage.IconImageSource>
+            <FontImageSource FontFamily="SimitIcons" Glyph="{x:Static localfont:SimitIcons.Info}" />
+        </views:InfoPage.IconImageSource>
+    </views:InfoPage>
+
+    <views:ProgrammaPage Title="Programma" >
+        <views:ProgrammaPage.IconImageSource>
+            <FontImageSource FontFamily="SimitIcons" Glyph="{x:Static localfont:SimitIcons.Calendar}" />
+        </views:ProgrammaPage.IconImageSource>
+    </views:ProgrammaPage>
+
+    <views:PosterPage Title="Poster" >
+        <views:PosterPage.IconImageSource>
+            <FontImageSource FontFamily="SimitIcons" Glyph="{x:Static localfont:SimitIcons.Poster}" />
+        </views:PosterPage.IconImageSource>
+    </views:PosterPage>
+
+    <views:SediPage Title="Sede" >
+        <views:SediPage.IconImageSource>
+            <FontImageSource FontFamily="SimitIcons" Glyph="{x:Static localfont:SimitIcons.Globe}" />
+        </views:SediPage.IconImageSource>
+    </views:SediPage>
+
+    <!--
+    <views:ComunicazioniPage Title="" >
+        <views:ComunicazioniPage.IconImageSource>
+            <FontImageSource FontFamily="SimitIcons" Glyph="{x:Static localfont:SimitIcons.ChatEmpty}" />
+        </views:ComunicazioniPage.IconImageSource>
+    </views:ComunicazioniPage>-->
+
+    <views:SegreteriaPage Title="Segreteria" >
+        <views:SegreteriaPage.IconImageSource>
+            <FontImageSource FontFamily="SimitIcons" Glyph="{x:Static localfont:SimitIcons.Abstract}" />
+        </views:SegreteriaPage.IconImageSource>
+    </views:SegreteriaPage>
+
+
+</TabbedPage>

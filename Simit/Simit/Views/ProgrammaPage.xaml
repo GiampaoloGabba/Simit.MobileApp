@@ -1,0 +1,54 @@
+﻿<?xml version="1.0"
+      encoding="utf-8"?>
+
+<shared:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 xmlns:shared="clr-namespace:Simit.Views.Shared;assembly=Simit"
+                 xmlns:viewModels="clr-namespace:Simit.ViewModels;assembly=Simit"
+                 xmlns:views="http://xamarin.com/schemas/2020/toolkit"
+                 x:Class="Simit.Views.ProgrammaPage"
+                 x:DataType="viewModels:ProgrammaPageViewModel"
+                 BackgroundColor="{StaticResource Accent}">
+
+    <Grid RowDefinitions="25, *" ColumnSpacing="10" ColumnDefinitions="*,Auto,Auto"
+          BackgroundColor="{StaticResource Accent}">
+
+        <Button Grid.Row="0" Grid.Column="2" HorizontalOptions="End" FontFamily="Roboto" FontSize="14"
+                TextColor="White" BackgroundColor="Transparent"
+                Text="FACULTY" Padding="0" Margin="20,0"
+                Command="{Binding FacultyCmd}" />
+
+        <views:TabView
+            x:Name="MyTabView"
+            Grid.Row="1"
+            Grid.Column="0"
+            Grid.ColumnSpan="3"
+            IsSwipeEnabled="{OnPlatform Android=True, iOS=True}"
+            SelectedIndex="0"
+            BackgroundColor="{StaticResource GrigioChiaro}"
+            TabStripPlacement="Top"
+            TabStripBackgroundColor="White"
+            TabStripHeight="45"
+            TabIndicatorColor="{StaticResource Accent}"
+            TabContentBackgroundColor="{StaticResource GrigioChiaro}">
+
+            <views:TabViewItem Text="2 dic" TextColor="Black" TextColorSelected="{StaticResource Accent}">
+                <shared:GrigliaProgramma Programma="{Binding Programma1}" />
+            </views:TabViewItem>
+
+            <views:TabViewItem Text="3 dic" TextColor="Black" TextColorSelected="{StaticResource Accent}">
+                <shared:GrigliaProgramma Programma="{Binding Programma2}" />
+            </views:TabViewItem>
+
+            <views:TabViewItem Text="4 dic" TextColor="Black" TextColorSelected="{StaticResource Accent}">
+                <shared:GrigliaProgramma Programma="{Binding Programma3}" />
+            </views:TabViewItem>
+
+            <views:TabViewItem Text="5 dic">
+                <shared:GrigliaProgramma Programma="{Binding Programma4}" />
+            </views:TabViewItem>
+
+        </views:TabView>
+    </Grid>
+
+</shared:BasePage>

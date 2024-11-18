@@ -1,0 +1,182 @@
+﻿<Grid
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewModels="clr-namespace:Simit.ViewModels;assembly=Simit"
+    xmlns:models="clr-namespace:Simit.Core.Models;assembly=Simit"
+    xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:converters="http://xamarin.com/schemas/2020/toolkit"
+    xmlns:localfont="clr-namespace:Simit.Resources.AppFonts;assembly=Simit"
+    xmlns:core="clr-namespace:Simit.Core;assembly=Simit"
+    x:Class="Simit.Views.Shared.GrigliaProgramma"
+    CompressedLayout.IsHeadless="True" RowDefinitions="Auto,*" RowSpacing="0">
+
+    <Grid.Resources>
+        <ResourceDictionary>
+            <core:AllTrueMultiConverter x:Key="AllTrueConverter" />
+        </ResourceDictionary>
+    </Grid.Resources>
+
+    <CollectionView Grid.Row="1" x:Name="Collection"
+                    ItemSizingStrategy="MeasureAllItems"
+                    VerticalScrollBarVisibility="Never"
+                    SelectionMode="None"
+                    VerticalOptions="FillAndExpand">
+
+        <CollectionView.Header>
+            <ContentView CompressedLayout.IsHeadless="True" HeightRequest="20" />
+        </CollectionView.Header>
+
+        <CollectionView.Footer>
+            <ContentView CompressedLayout.IsHeadless="True" HeightRequest="20" />
+        </CollectionView.Footer>
+
+        <CollectionView.ItemTemplate>
+            <DataTemplate x:DataType="models:Programma">
+
+                <Grid CompressedLayout.IsHeadless="True">
+
+                    <pancakeView:PancakeView IsVisible="{Binding HasDati}"
+                                             BackgroundColor="White" Padding="0,0,10,0"
+                                             CornerRadius="0,0,0,40" Margin="0,0,25,20">
+
+                        <Grid CompressedLayout.IsHeadless="True" RowSpacing="0"
+                              ColumnDefinitions="8,*" RowDefinitions="Auto,*">
+
+                            <ContentView Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"
+                                         BackgroundColor="{Binding ColoreHex}" />
+
+                            <StackLayout CompressedLayout.IsHeadless="True"
+                                         Orientation="Horizontal" Grid.Column="1" Grid.Row="0" HorizontalOptions="End">
+
+                                <Frame
+                                    IsVisible="{Binding InfoAgg, Converter={converters:IsNotNullOrEmptyConverter}}"
+                                    HasShadow="False"
+                                    HorizontalOptions="End"
+                                    VerticalOptions="Start"
+                                    BackgroundColor="{StaticResource GrigioChiaro}"
+                                    CornerRadius="8"
+                                    Margin="0,7,0,0"
+                                    Padding="8, 3">
+
+                                    <Label Text="{Binding InfoAgg, Converter={converters:TextCaseConverter Upper}}"
+                                           Style="{StaticResource TestoMainXS}" TextColor="#b3b3b3" FontSize="12" />
+
+                                </Frame>
+
+                                <Frame
+                                    IsVisible="{Binding Sala, Converter={converters:IsNotNullOrEmptyConverter}}"
+                                    HasShadow="False"
+                                    HorizontalOptions="End"
+                                    VerticalOptions="Start"
+                                    BackgroundColor="{Binding ColoreHex}"
+                                    CornerRadius="8"
+                                    Margin="0,7,0,0"
+                                    Padding="8, 3">
+
+                                    <Label Text="{Binding Sala, Converter={converters:TextCaseConverter Upper}}"
+                                           Style="{StaticResource TestoMainXS}" TextColor="#ffffff" FontSize="12" />
+                                </Frame>
+
+                            </StackLayout>
+
+                            <StackLayout Grid.Column="1" Grid.Row="1" Spacing="0" CompressedLayout.IsHeadless="True">
+                                <Label Text="{Binding Ora}" Style="{StaticResource TitoloSub}" Margin="10,4,0,0" />
+                                <Label Text="{Binding Titolo}" Style="{StaticResource TitoloAccentSM}"
+                                       Margin="10,0,0,0" />
+                                <Label Text="{Binding SottoTitolo}" Style="{StaticResource TestoMainXS}"
+                                       Margin="10,0,0,15" />
+
+                                <Frame HasShadow="False"
+                                       HorizontalOptions="Center"
+                                       BackgroundColor="{StaticResource Primario}"
+                                       Padding="8"
+                                       CornerRadius="5"
+                                       Margin="0,0,0,15">
+
+                                    <Frame.IsVisible>
+                                        <MultiBinding Converter="{StaticResource AllTrueConverter}">
+                                            <Binding Path="HasReminderForced"
+                                                     Converter="{converters:InvertedBoolConverter}" />
+                                            <Binding Path="Ora" Converter="{converters:IsNotNullOrEmptyConverter}" />
+                                        </MultiBinding>
+                                    </Frame.IsVisible>
+
+                                    <StackLayout Spacing="5" Orientation="Horizontal">
+                                        <Label Text="{x:Static localfont:SimitIcons.Calendar}"
+                                               VerticalOptions="Center"
+                                               Style="{StaticResource TestoMainXS}" TextColor="White"
+                                               FontFamily="SimitIcons" />
+                                        <Label Text="Aggiungi al calendario" Style="{StaticResource TestoMainXS}"
+                                               VerticalOptions="Center" TextColor="White" />
+                                    </StackLayout>
+
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:ProgrammaPageViewModel}}, Path=AddReminderCmd}"
+                                            CommandParameter="{Binding .}" />
+                                    </Frame.GestureRecognizers>
+
+                                </Frame>
+
+                                <Frame IsVisible="{Binding HasReminderForced}"
+                                       HasShadow="False"
+                                       HorizontalOptions="Center"
+                                       BackgroundColor="{StaticResource GrigioChiaro}"
+                                       Padding="8"
+                                       CornerRadius="5"
+                                       Margin="0,0,0,15">
+
+                                    <StackLayout Spacing="5" Orientation="Horizontal">
+                                        <Label Text="{x:Static localfont:SimitIcons.Calendar}"
+                                               VerticalOptions="Center"
+                                               Style="{StaticResource TestoMainXS}" FontFamily="SimitIcons" />
+                                        <Label Text="Aggiunto al calendario" VerticalOptions="Center"
+                                               Style="{StaticResource TestoMainXS}" />
+                                    </StackLayout>
+
+                                </Frame>
+
+                            </StackLayout>
+
+                        </Grid>
+
+                    </pancakeView:PancakeView>
+
+
+                    <StackLayout Spacing="0"
+                                 IsVisible="{Binding HasDati, Converter={converters:InvertedBoolConverter}}">
+
+                        <StackLayout.Margin>
+                            <OnPlatform x:TypeArguments="Thickness">
+                                <OnPlatform.Platforms>
+                                    <On Platform="Android" Value="22,0,0,0" />
+                                    <On Platform="iOS" Value="22,5,0,18" />
+                                </OnPlatform.Platforms>
+
+                            </OnPlatform>
+                        </StackLayout.Margin>
+
+
+                        <Label Text="{Binding Ora}" Style="{StaticResource TitoloSub}" />
+                        <Label Text="{Binding Titolo}" Style="{StaticResource TitoloAccentSM}" Margin="0,2,0,0" />
+                        <Label Text="{Binding SottoTitolo}" Style="{StaticResource TestoMainXS}" Margin="0,5,0,0" />
+                    </StackLayout>
+
+                    <Label FontFamily="SimitIcons" Text="{x:Static localfont:SimitIcons.InfoCircled}"
+                           FontSize="30"
+                           Margin="0,0,25,0" IsVisible="{Binding HasScheda}"
+                           TranslationY="{OnPlatform Android=-15, iOS=-20}"
+                           HorizontalOptions="End" VerticalOptions="End" TextColor="{StaticResource Primario}">
+
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:ProgrammaPageViewModel}}, Path=DettagliCmd}"
+                                CommandParameter="{Binding .}" />
+                        </Label.GestureRecognizers>
+                    </Label>
+
+                </Grid>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+</Grid>

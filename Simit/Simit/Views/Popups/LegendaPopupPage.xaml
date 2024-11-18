@@ -1,0 +1,50 @@
+﻿<?xml version="1.0"
+      encoding="utf-8"?>
+
+<shared:BasePopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 xmlns:shared="clr-namespace:Simit.Views.Shared;assembly=Simit"
+                 x:Class="Simit.Views.Popups.LegendaPopupPage">
+    <shared:BasePopupPage.Resources>
+
+        <ResourceDictionary>
+            <Style TargetType="Frame">
+                <Setter Property="HasShadow" Value="False" />
+                <Setter Property="Padding" Value="13" />
+                <Setter Property="CornerRadius" Value="18" />
+                <Setter Property="BorderColor" Value="#BDFFFFFF" />
+            </Style>
+
+            <Style TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="FontFamily" Value="Roboto-Regular" />
+                <Setter Property="FontSize" Value="15" />
+            </Style>
+
+        </ResourceDictionary>
+
+    </shared:BasePopupPage.Resources>
+
+
+    <StackLayout Spacing="15" Margin="0,0,0,20" VerticalOptions="Center">
+
+        <Frame BackgroundColor="#FFC300">
+            <Label Text="Sala Silver" />
+        </Frame>
+
+        <Frame BackgroundColor="#F47100">
+            <Label Text="Sessione Parallela" />
+        </Frame>
+
+        <Frame BackgroundColor="#9BC0E9">
+            <Label Text="Lunch Session" />
+        </Frame>
+
+        <Frame BackgroundColor="#1766C5">
+            <Label Text="Assemblea / Altre attività" />
+        </Frame>
+
+    </StackLayout>
+
+</shared:BasePopupPage>

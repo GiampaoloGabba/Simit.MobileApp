@@ -1,0 +1,12 @@
+﻿<?xml version="1.0"
+      encoding="utf-8"?>
+
+<shared:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 xmlns:shared="clr-namespace:Simit.Views.Shared;assembly=Simit"
+                 xmlns:viewModels="clr-namespace:Simit.ViewModels;assembly=Simit"
+                 x:Class="Simit.Views.BrowserPage" x:DataType="viewModels:BrowserPageViewModel">
+
+    <WebView x:Name="WebViewTesti" Source="{Binding Url}" />
+
+</shared:BasePage>

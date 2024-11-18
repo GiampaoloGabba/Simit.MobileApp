@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<shared:BasePage x:Class="Simit.Views.Shared.Loader.LoadingPage"
+                 xmlns="http://xamarin.com/schemas/2014/forms"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 xmlns:shared="clr-namespace:Simit.Views.Shared;assembly=Simit"
+                 xmlns:loader="clr-namespace:Simit.Views.Shared.Loader;assembly=Simit"
+                 x:DataType="loader:LoadingPageViewModel">
+
+    <ContentView HorizontalOptions="Center" VerticalOptions="Center">
+        <ActivityIndicator HorizontalOptions="Center"
+                           IsRunning="True"
+                           VerticalOptions="Center" />
+    </ContentView>
+
+</shared:BasePage>

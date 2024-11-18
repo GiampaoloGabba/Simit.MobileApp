@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "464461060391",
+    "project_id": "simit-91a99",
+    "storage_bucket": "simit-91a99.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:464461060391:android:d34e9430e118f4c2cc3102",
+        "android_client_info": {
+          "package_name": "it.evolutionlab.simit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "464461060391-0348hbmghttu4l6ubo5lrb27idnjkflt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbNsEVUVHMORFhmYaFdpCUW8jCI39x-xY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "464461060391-0348hbmghttu4l6ubo5lrb27idnjkflt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
