@@ -34,7 +34,7 @@ namespace Simit.ViewModels
 
         public event EventHandler IsActiveChanged;
 
-		private bool _isBusyFaculty;
+		private bool _isBusyAction;
 
 		public ProgrammaPageViewModel(INavigationService navigationService, SimitApiManager simitApiManager)
 			: base(navigationService)
@@ -45,23 +45,23 @@ namespace Simit.ViewModels
 
 			DettagliCmd = new Command<Programma>(async (programma) =>
 			{
-				if (!IsBusy)
+				if (!_isBusyAction)
 				{
-					IsBusy = true;
+                    _isBusyAction = true;
 					var navPar = new NavigationParameters {{"programma", programma}};
 					await NavigationService.NavigateAsync(nameof(DettagliPopupPage), navPar);
-					IsBusy = false;
+                    _isBusyAction = false;
 				}
 			});
 			
 			
             FacultyCmd = new Command<Programma>(async (programma) =>
 			{
-				if (!_isBusyFaculty)
+				if (!_isBusyAction)
 				{
-                    _isBusyFaculty = true;
+                    _isBusyAction = true;
 					await NavigationService.NavigateAsync(nameof(RelatoriPopupPage));
-                    _isBusyFaculty = false;
+                    _isBusyAction = false;
 				}
 			});
 
@@ -122,19 +122,19 @@ namespace Simit.ViewModels
 
         protected override async Task RefreshPage()
         {
-			await GetProgrammaAsync(false);
+            await Task.Delay(150);
+            Programma1.Clear();
+            Programma2.Clear();
+            Programma3.Clear();
+            Programma4.Clear();
+            await Task.Delay(150);
+            await GetProgrammaAsync(false);
         }
 
         private void GetProgramma()
 		{
 			Task.Run(async () =>
 			{
-				await Task.Delay(150);
-				Programma1.Clear();
-                Programma2.Clear();
-                Programma3.Clear();
-                Programma4.Clear();
-                await Task.Delay(150);
                 await GetProgrammaAsync();
 			});
 		}

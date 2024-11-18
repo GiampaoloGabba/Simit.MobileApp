@@ -63,7 +63,7 @@
                 <shared:GrigliaProgramma Programma="{Binding Programma3}" />
             </views:TabViewItem>
 
-            <views:TabViewItem Text="5 dic">
+            <views:TabViewItem Text="5 dic" TextColor="Black" TextColorSelected="{StaticResource Accent}">
                 <shared:GrigliaProgramma Programma="{Binding Programma4}" />
             </views:TabViewItem>
 
