@@ -26,7 +26,7 @@ namespace Simit.Core.Api
 
         public async Task<ApApiResponse<List<Programma>>> GetProgramma(Priority priority, bool onlyFromCache = false)
         {
-            return await BaseRequest(_simitApiService.GetApi(priority).GetProgramma(), onlyFromCache, nameof(Programma)).ConfigureAwait(false);
+            return await BaseRequest(_simitApiService.GetApi(priority).GetProgramma(), onlyFromCache, nameof(Programma), 30).ConfigureAwait(false);
         }
 
         public async Task<ApApiResponse<string>> Login(LoginRequest loginRequest)

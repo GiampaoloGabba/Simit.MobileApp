@@ -8,7 +8,7 @@
     xmlns:localfont="clr-namespace:Simit.Resources.AppFonts;assembly=Simit"
     xmlns:core="clr-namespace:Simit.Core;assembly=Simit"
     x:Class="Simit.Views.Shared.GrigliaProgramma"
-    CompressedLayout.IsHeadless="True" RowDefinitions="Auto,*" RowSpacing="0">
+    RowDefinitions="Auto,*" RowSpacing="0">
 
     <Grid.Resources>
         <ResourceDictionary>
@@ -33,19 +33,19 @@
         <CollectionView.ItemTemplate>
             <DataTemplate x:DataType="models:Programma">
 
-                <Grid CompressedLayout.IsHeadless="True">
+                <Grid>
 
                     <pancakeView:PancakeView IsVisible="{Binding HasDati}"
                                              BackgroundColor="White" Padding="0,0,10,0"
                                              CornerRadius="0,0,0,40" Margin="0,0,25,20">
 
-                        <Grid CompressedLayout.IsHeadless="True" RowSpacing="0"
+                        <Grid RowSpacing="0"
                               ColumnDefinitions="8,*" RowDefinitions="Auto,*">
 
                             <ContentView Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"
                                          BackgroundColor="{Binding ColoreHex}" />
 
-                            <StackLayout CompressedLayout.IsHeadless="True"
+                            <StackLayout 
                                          Orientation="Horizontal" Grid.Column="1" Grid.Row="0" HorizontalOptions="End">
 
                                 <Frame
@@ -79,7 +79,7 @@
 
                             </StackLayout>
 
-                            <StackLayout Grid.Column="1" Grid.Row="1" Spacing="0" CompressedLayout.IsHeadless="True">
+                            <StackLayout Grid.Column="1" Grid.Row="1" Spacing="0" >
                                 <Label Text="{Binding Ora}" Style="{StaticResource TitoloSub}" Margin="10,4,0,0" />
                                 <Label Text="{Binding Titolo}" Style="{StaticResource TitoloAccentSM}"
                                        Margin="10,0,0,0" />

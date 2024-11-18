@@ -8,6 +8,7 @@ using Simit.Core;
 using Simit.Views;
 using Xamarin.Essentials;
 using Xamarin.Forms;
+using Simit.Core.Models;
 
 namespace Simit.ViewModels
 {
@@ -21,9 +22,11 @@ namespace Simit.ViewModels
 		public bool     IsOffline       { get; private set; }
 		public ICommand InfoLinkCommand { get; set; }
 		public ICommand GoBackCommand   { get; set; }
-		public bool     ShowClose       { get; set; }
+        public ICommand RefreshCmd      { get; set; }
+        public bool     ShowClose       { get; set; }
+        public bool     ShowRefresh     { get; set; }
 
-		public ViewModelBase(INavigationService navigationService)
+        public ViewModelBase(INavigationService navigationService)
 		{
 			NavigationService = navigationService;
 
@@ -112,7 +115,17 @@ namespace Simit.ViewModels
 					IsBusy = false;
 				}
 			});
-		}
+
+            RefreshCmd = new Command<Programma>(async (programma) =>
+            {
+                if (!IsBusy)
+                {
+                    IsBusy = true;
+                    await RefreshPage();
+                    IsBusy = false;
+                }
+            });
+        }
 
 		async Task AreaRiservata()
 		{
@@ -139,6 +152,11 @@ namespace Simit.ViewModels
 
 			await Browser.OpenAsync(
 				link, opt);
+		}
+
+		protected virtual Task RefreshPage()
+		{
+			return Task.CompletedTask;
 		}
 
 		public virtual void Initialize(INavigationParameters parameters)

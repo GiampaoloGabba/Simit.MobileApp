@@ -37,12 +37,12 @@ namespace Simit.Core.Api.Infrastructure
             }
         }
 
-        public virtual void SaveToCache<TData>(string cacheKey, TData data, int days)
+        public virtual void SaveToCache<TData>(string cacheKey, TData data, int minutes)
         {
             if (data == null)
                 EmptyCache(cacheKey);
             else
-                Barrel.Current.Add(cacheKey, data, TimeSpan.FromDays(days));
+                Barrel.Current.Add(cacheKey, data, TimeSpan.FromMinutes(minutes));
         }
 
         public virtual void EmptyCache(string cacheKey)
@@ -97,7 +97,7 @@ namespace Simit.Core.Api.Infrastructure
             }
         }
 
-        protected virtual async Task<ApApiResponse<TData>> BaseRequest<TData>(Task<ApiResponse<TData>> request, bool onlyFromCache = false, string cacheKey = "", int expirationDays = 1 )
+        protected virtual async Task<ApApiResponse<TData>> BaseRequest<TData>(Task<ApiResponse<TData>> request, bool onlyFromCache = false, string cacheKey = "", int expirationMinutes = 1440)
         {
             var response = new ApApiResponse<TData>();
 
@@ -144,7 +144,7 @@ namespace Simit.Core.Api.Infrastructure
                 }
 
                 if (cacheKey != "")
-                    SaveToCache(cacheKey, ris.Content, expirationDays);
+                    SaveToCache(cacheKey, ris.Content, expirationMinutes);
             }
             catch (ApiException ex)
             {

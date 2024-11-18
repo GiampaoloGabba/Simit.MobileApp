@@ -32,13 +32,16 @@ namespace Simit.ViewModels
 		public ICommand AddReminderCmd { get; set; }
 		public ICommand FacultyCmd { get; set; }
 
-		public event EventHandler IsActiveChanged;
+        public event EventHandler IsActiveChanged;
+
+		private bool _isBusyFaculty;
 
 		public ProgrammaPageViewModel(INavigationService navigationService, SimitApiManager simitApiManager)
 			: base(navigationService)
 		{
 			_simitApiManager = simitApiManager;
 			Title            = "Programma";
+			ShowRefresh = true;
 
 			DettagliCmd = new Command<Programma>(async (programma) =>
 			{
@@ -54,11 +57,11 @@ namespace Simit.ViewModels
 			
             FacultyCmd = new Command<Programma>(async (programma) =>
 			{
-				if (!IsBusy)
+				if (!_isBusyFaculty)
 				{
-					IsBusy = true;
+                    _isBusyFaculty = true;
 					await NavigationService.NavigateAsync(nameof(RelatoriPopupPage));
-					IsBusy = false;
+                    _isBusyFaculty = false;
 				}
 			});
 
@@ -103,7 +106,7 @@ namespace Simit.ViewModels
 				}
 
 			});
-		}
+        }
 
 		private void OnIsActiveChanged()
 		{
@@ -116,46 +119,63 @@ namespace Simit.ViewModels
 			}
 		}
 
-		public void GetProgramma()
+
+        protected override async Task RefreshPage()
+        {
+			await GetProgrammaAsync(false);
+        }
+
+        private void GetProgramma()
 		{
 			Task.Run(async () =>
 			{
-				var prgRequest = await _simitApiManager.GetProgramma(Priority.UserInitiated, true);
-				var programma  = prgRequest.Content;
-
-				if (programma == null || programma.Count == 0)
-				{
-					prgRequest = await _simitApiManager.GetProgramma(Priority.UserInitiated);
-					programma  = prgRequest.Content ?? new List<Programma>();
-				}
-				
-				foreach (var progr in programma)
-				{
-					progr.HasReminderForced = progr.HasReminder;
-				}
-
-				var cont = 0;
-
-				foreach (var gruppo in programma.GroupBy(x=>x.Data))
-				{
-					cont++;
-					switch (cont)
-					{
-						case 1:
-							Programma1 = new ObservableCollection<Programma>(gruppo.ToList());
-							break;
-						case 2:
-							Programma2 = new ObservableCollection<Programma>(gruppo.ToList());
-							break;
-						case 3:
-							Programma3 = new ObservableCollection<Programma>(gruppo.ToList());
-							break;
-						default:
-							Programma4 = new ObservableCollection<Programma>(gruppo.ToList());
-							break;
-					}
-				}
+				await Task.Delay(150);
+				Programma1.Clear();
+                Programma2.Clear();
+                Programma3.Clear();
+                Programma4.Clear();
+                await Task.Delay(150);
+                await GetProgrammaAsync();
 			});
+		}
+
+        private async Task GetProgrammaAsync(bool loadFromCache = true)
+		{
+            var prgRequest = await _simitApiManager.GetProgramma(Priority.UserInitiated, loadFromCache);
+            var programma = prgRequest.Content;
+
+            if (programma == null || programma.Count == 0)
+            {
+                prgRequest = await _simitApiManager.GetProgramma(Priority.UserInitiated);
+                programma = prgRequest.Content ?? new List<Programma>();
+            }
+
+            foreach (var progr in programma)
+            {
+                progr.HasReminderForced = progr.HasReminder;
+            }
+
+            var cont = 0;
+
+            foreach (var gruppo in programma.GroupBy(x => x.Data))
+            {
+                cont++;
+                switch (cont)
+                {
+                    case 1:
+                        Programma1 = new ObservableCollection<Programma>(gruppo.ToList());
+                        break;
+                    case 2:
+                        Programma2 = new ObservableCollection<Programma>(gruppo.ToList());
+                        break;
+                    case 3:
+                        Programma3 = new ObservableCollection<Programma>(gruppo.ToList());
+                        break;
+                    default:
+                        Programma4 = new ObservableCollection<Programma>(gruppo.ToList());
+                        break;
+                }
+            }
 		}
 	}
 

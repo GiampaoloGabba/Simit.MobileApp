@@ -18,8 +18,27 @@
                 Text="FACULTY" Padding="0" Margin="20,0"
                 Command="{Binding FacultyCmd}" />
 
+        <ContentView
+            IsVisible="{Binding IsBusy}"
+            Grid.Row="1"
+            Grid.Column="0"
+            Grid.ColumnSpan="3"
+            VerticalOptions="FillAndExpand"
+            BackgroundColor="{StaticResource GrigioChiaro}"
+            >
+
+             <ActivityIndicator IsRunning="True"
+                                IsVisible="True"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center"
+                                Scale="2" Color="{StaticResource Primario}" />
+
+
+        </ContentView>
+
         <views:TabView
             x:Name="MyTabView"
+            IsVisible="{Binding IsBusy, Converter={StaticResource InverseBoolConverter}}"
             Grid.Row="1"
             Grid.Column="0"
             Grid.ColumnSpan="3"
